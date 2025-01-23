@@ -1,0 +1,24 @@
+name: Run Python Script Daily
+
+on:
+  schedule:
+    - cron: '30 16 * * *' # اجرا هر روز ساعت 8 شب به وقت تهران
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9' # نسخه پایتون مورد نیاز
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Run Python script
+      run: python New\ Text.py
